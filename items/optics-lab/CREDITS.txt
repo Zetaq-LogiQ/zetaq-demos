@@ -1,0 +1,2 @@
+Optics bench, lasers, prism, lenses, mirrors, light paths and music are made in code by ZetaQ. No photos or outside models.
+Software: three.js (MIT licence, Copyright 2010-2024 Three.js Authors) with its post-processing addons (MIT).

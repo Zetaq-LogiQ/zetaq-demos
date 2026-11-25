@@ -30,6 +30,7 @@ Each demo runs in the browser (phone or computer); no login, no server.
 
 | Demo | Class / subject | Open |
 |---|---|---|
+| Optics Lab | Physics · 3D | [open](https://zetaq-logiq.github.io/zetaq-demos/play.html?d=optics-lab) · [direct](https://zetaq-logiq.github.io/zetaq-demos/items/optics-lab/index.html) |
 | Electric Circuit | Class 7 · Science | [open](https://zetaq-logiq.github.io/zetaq-demos/play.html?d=circuit) · [direct](https://zetaq-logiq.github.io/zetaq-demos/items/circuit/index.html) |
 | Lemon Cell and Dry Cell | Class 8 · Science | [open](https://zetaq-logiq.github.io/zetaq-demos/play.html?d=lemon-cell) · [direct](https://zetaq-logiq.github.io/zetaq-demos/items/lemon-cell/index.html) |
 
@@ -37,6 +38,7 @@ Each demo runs in the browser (phone or computer); no login, no server.
 
 | Demo | Class / subject | Open |
 |---|---|---|
+| Chemistry Lab | Chemistry · 3D | [open](https://zetaq-logiq.github.io/zetaq-demos/play.html?d=chem-lab) · [direct](https://zetaq-logiq.github.io/zetaq-demos/items/chem-lab/index.html) |
 | Changes Lab | Class 7 · Science | [open](https://zetaq-logiq.github.io/zetaq-demos/play.html?d=changes-lab) · [direct](https://zetaq-logiq.github.io/zetaq-demos/items/changes-lab/index.html) |
 | Separation Lab | Class 8 · Science | [open](https://zetaq-logiq.github.io/zetaq-demos/play.html?d=separation-lab) · [direct](https://zetaq-logiq.github.io/zetaq-demos/items/separation-lab/index.html) |
 
