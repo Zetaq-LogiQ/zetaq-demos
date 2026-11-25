@@ -1,0 +1,4 @@
+3D: bean seedling (ZetaQ 3D library, made in Tripo Studio, paid plan, commercial use); leaf, tripod, gauze, beaker,
+iodine bottle and dropper made by ZetaQ in Blender; the lab room and all other apparatus built in code by ZetaQ.
+Music and sounds are made in the page.
+Software: three.js r170 (MIT licence, Copyright 2010-2024 Three.js Authors). meshoptimizer decoder (MIT licence).

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Separation Lab</title>
+<style>
+:root{--ink:#EAF1F6;--dim:#A9B9C6;--panel:rgba(16,24,33,.9);--panel2:rgba(34,48,61,.95);--line:rgba(160,190,210,.18);--acc:#2A9D96;--sky:#4FB3FF;--coral:#FF6F61;--lime:#9ED85A;--violet:#8A6CF0;--sun:#FFD25A;--shadow:0 6px 22px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:#0E161D;color:var(--ink);font:15px/1.35 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;touch-action:none;user-select:none;-webkit-user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+button{font:inherit;border:0;cursor:pointer;color:inherit;background:none}
+button:disabled{cursor:default;opacity:.4}
+.btn{min-height:44px;min-width:44px;border-radius:12px;background:var(--panel2);box-shadow:var(--shadow);padding:0 12px;font-weight:600;border:1px solid var(--line)}
+.ico{width:20px;height:20px;vertical-align:middle}
+#labels{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.lbl{position:absolute;left:0;top:0;background:rgba(14,22,30,.86);border:1px solid var(--line);color:#fff;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.lbl b{color:#8FD0FF}.lbl.y b{color:#FFE38F}.lbl.c b{color:#FFA092}.lbl.g b{color:#C2EE82}.lbl.two{text-align:center;border-radius:10px;line-height:1.25}
+#top{position:fixed;left:0;right:0;top:0;padding:max(8px,env(safe-area-inset-top)) 8px 0;display:flex;gap:8px;align-items:flex-start;z-index:5;pointer-events:none}
+#top>*{pointer-events:auto}
+#card{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px 10px;display:flex;gap:8px;align-items:center}
+#card .t{flex:1;min-width:0}
+#card .k{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#74E3D9}
+#taskText{font-weight:600;font-size:14.5px}
+#hintText{font-size:13px;color:#FFE38F;margin-top:3px;display:none}
+#bHint{background:#3a3420;color:#FFE38F;padding:0 10px}
+#side{display:flex;flex-direction:column;gap:6px}
+#side .btn{padding:0;width:44px}
+#hud{position:fixed;left:8px;z-index:4;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 10px;font-size:12.5px;max-width:min(340px,calc(100vw - 70px));pointer-events:none;box-shadow:var(--shadow)}
+#hud .big{font-size:15px;font-weight:800}
+#hud .row{color:var(--dim)}
+#hud .row b{color:var(--ink);font-weight:700}
+#hud .safe{color:#FFE38F;font-weight:700}
+#hud .bar{height:7px;border-radius:4px;background:#2C3B4A;overflow:hidden;margin-top:3px}#hud .bar i{display:block;height:100%;width:0;background:var(--acc)}
+@media (max-width:899px){#hud{right:62px;max-width:none}}
+#bottom{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:0 8px max(8px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:6px;pointer-events:none}
+#bottom>*{pointer-events:auto}
+#tabs{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px}
+#tabs button{flex:1 1 0;min-width:0;min-height:38px;border-radius:9px;padding:0 6px;font-size:13px;font-weight:700;color:var(--dim);white-space:nowrap}
+#tabs button.on{background:#1B5E63;color:#fff}
+#ctrl{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow)}
+.grp{display:none;flex-wrap:wrap;gap:6px;align-items:center}
+.grp.on{display:flex}
+.lab{font-size:11.5px;color:var(--dim);font-weight:700;width:100%;margin-bottom:-2px}
+.cb{flex:1 1 calc(33.3% - 6px);min-width:0;min-height:44px;border-radius:11px;background:var(--panel2);border:1px solid var(--line);font-weight:700;font-size:13px;padding:0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cb.q{flex-basis:calc(25% - 6px);font-size:12.5px;white-space:normal;line-height:1.12;padding:0 3px}
+.cb.on{outline:2px solid #74E3D9;background:#1B5E63}
+.cb.hold.on{background:#5a3c86;outline-color:#C6B0FF}
+.cb.heat.on{background:#7a2e28;outline-color:#FFA092}
+.steps{display:none;gap:6px;width:100%}.steps.on{display:flex}.steps .cb{white-space:normal;line-height:1.12;padding:0 4px}
+#recRow{display:flex;gap:6px;margin-top:6px}
+#bRecord{flex:1;min-height:46px;border-radius:12px;background:var(--acc);color:#fff;font-weight:800;font-size:15px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);z-index:8;background:rgba(14,22,30,.95);border:1px solid var(--line);color:#fff;padding:9px 14px;border-radius:12px;font-weight:600;font-size:14px;max-width:min(92vw,520px);text-align:center;box-shadow:var(--shadow);opacity:0;transition:opacity .25s;pointer-events:none}
+#toast.show{opacity:1}#toast.good{background:#16514C}#toast.bad{background:#5c2a2a}
+#sheet{position:fixed;inset:0;z-index:9;background:rgba(5,10,14,.55);display:none;align-items:flex-end;justify-content:center}
+#sheet.show{display:flex}
+#sheet .box{width:min(560px,100%);max-height:86vh;overflow:auto;background:#17222C;border:1px solid var(--line);border-radius:18px 18px 0 0;padding:14px 14px max(16px,env(safe-area-inset-bottom));box-shadow:var(--shadow)}
+#sheet h2{margin:0 0 8px;font-size:18px}
+#sheet .x{float:right;min-height:40px}
+.trow{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0;min-height:52px}
+.trow .n{width:26px;height:26px;border-radius:50%;background:#2C3B4A;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.trow .s{margin-left:auto;color:var(--sun);font-size:16px;letter-spacing:1px;flex:none}
+.trow.cur{outline:2px solid #74E3D9}.trow small{display:block;color:var(--dim);font-size:12px}
+.icard{background:#F2F5F3;color:#1F2A44;border-radius:12px;padding:10px 12px;margin:8px 0;border-left:6px solid #2F6FD6;font-size:14.5px}
+.icard h3{margin:0 0 4px;font-size:15px;color:#2F6FD6}
+.icard.safe{border-left-color:#D9473F}.icard.safe h3{color:#D9473F}
+.icard .eq{display:block;margin-top:6px;font-weight:700;color:#0D857F}
+.cardbtn{display:block;width:100%;text-align:left;min-height:46px;margin:5px 0;padding:0 12px;border-radius:11px;background:var(--panel2);border:1px solid var(--line);font-weight:700}
+#intro{position:fixed;inset:0;z-index:10;background:radial-gradient(ellipse at 50% 30%,#22394a 0%,#0c141a 75%);display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}
+#intro .box{max-width:520px;background:rgba(16,24,33,.92);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+#intro h1{margin:0;font-size:24px}#intro .sub{color:#74E3D9;font-weight:700;margin:2px 0 10px}
+#intro p,#intro li{color:#D5E0E8;font-size:14.5px}#intro ul{padding-left:20px;margin:8px 0}
+#bStart{width:100%;min-height:52px;border-radius:14px;background:var(--acc);color:#fff;font-size:17px;font-weight:800;margin-top:10px}
+#loading{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;color:var(--dim)}
+#done{position:fixed;inset:0;z-index:11;background:rgba(5,10,14,.7);display:none;align-items:center;justify-content:center;padding:18px}
+#done .box{max-width:420px;background:#17222C;border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center}
+@media (min-width:900px){
+  #bottom{left:auto;right:12px;bottom:12px;width:440px;padding:0}
+  #hud{top:auto!important;bottom:12px;left:12px}
+}
+</style>
+</head><body>
+<canvas id="c"></canvas>
+<div id="loading">Loading the lab…</div>
+<div id="labels"></div>
+<div id="top">
+  <div id="card">
+    <div class="t"><div class="k" id="taskKey">Tasks 0/6</div><div id="taskText">Choose a task.</div><div id="hintText"></div></div>
+    <button class="btn" id="bHint" aria-label="Hint">Hint</button>
+  </div>
+  <div id="side">
+    <button class="btn" id="bList" aria-label="Task list"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.4"/><circle cx="4.5" cy="12" r="1.4"/><circle cx="4.5" cy="18" r="1.4"/></svg></button>
+    <button class="btn" id="bInfo" aria-label="Info cards"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".6" fill="currentColor"/></svg></button>
+    <button class="btn" id="bMusic" aria-label="Music on or off"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg></button>
+    <button class="btn" id="bExit" aria-label="Exit" style="font-size:12px">Exit</button>
+  </div>
+</div>
+<div id="hud"></div>
+<div id="bottom">
+  <div id="tabs" role="tablist">
+    <button data-st="sep" class="on">Separate</button><button data-st="fes">Iron + sulfur</button><button data-st="sug">Heat sugar</button>
+  </div>
+  <div id="ctrl">
+    <div class="grp on" data-g="sep">
+      <span class="lab">Mixture</span>
+      <button class="cb q" id="mIron">Iron + sand</button><button class="cb q" id="mGrain">Two grains</button><button class="cb q" id="mSand">Sand + water</button><button class="cb q" id="mSalt">Salt water</button>
+      <span class="lab">Apparatus</span>
+      <button class="cb q" id="aMagnet">Magnet</button><button class="cb q" id="aSieve">Sieve</button><button class="cb q" id="aFilter">Filter</button><button class="cb q" id="aDish">Dish + burner</button>
+      <div class="steps" id="stNone"><button class="cb" disabled>Pick the apparatus for this mixture</button></div>
+      <div class="steps" id="stMagnet"><button class="cb hold" id="sMagnet">Hold to sweep the magnet</button><button class="cb" id="sReset1">Start again</button></div>
+      <div class="steps" id="stSieve"><button class="cb" id="sPourSieve">Pour into sieve</button><button class="cb hold" id="sShake">Hold to shake</button><button class="cb" id="sReset2">Start again</button></div>
+      <div class="steps" id="stFilter"><button class="cb" id="sFold">Fold paper</button><button class="cb" id="sFit">Fit in funnel</button><button class="cb hold" id="sPourF">Hold to pour</button><button class="cb" id="sReset3">Again</button></div>
+      <div class="steps" id="stDish"><button class="cb" id="sPourDish">Pour into dish</button><button class="cb heat" id="sBurner">Light burner</button><button class="cb" id="sReset4">Start again</button></div>
+    </div>
+    <div class="grp" data-g="fes">
+      <button class="cb" id="fTake">Weigh out</button><button class="cb" id="fMix">Mix: Sample A</button><button class="cb hold" id="fMagA">Magnet over A</button>
+      <button class="cb heat" id="fBurner">Light burner</button><button class="cb hold" id="fStir">Hold to stir</button><button class="cb" id="fGrind">Cool + grind</button>
+      <button class="cb hold" id="fMagB">Magnet over B</button><button class="cb" id="fGas">Gas test</button><button class="cb" id="fReset">Start again</button>
+    </div>
+    <div class="grp" data-g="sug">
+      <button class="cb" id="uAdd">Add sugar</button><button class="cb heat" id="uLamp">Light lamp</button><button class="cb hold" id="uHeat">Hold to heat</button>
+      <button class="cb" id="uScoop">Scoop it out</button><button class="cb" id="uReset">Start again</button>
+    </div>
+    <div id="recRow"><button id="bRecord">Record result</button></div>
+  </div>
+</div>
+<div id="toast"></div>
+<div id="sheet"><div class="box" id="sheetBox"></div></div>
+<div id="done"><div class="box"><h2 style="margin-top:0">All six experiments done</h2><p id="doneStars"></p><p style="color:#A9B9C6">You can keep exploring, or close this page.</p><button class="btn" id="bDoneOk" style="width:100%">Keep exploring</button></div></div>
+<div id="intro"><div class="box">
+  <h1>Separation Lab</h1>
+  <div class="sub">Elements, compounds and mixtures</div>
+  <p>When two or more substances are mixed, where each substance retains its properties, it is called a mixture. In science, the purpose of separating a mixture is to obtain pure substances.</p>
+  <ul>
+    <li>Separate four mixtures: pick the right apparatus and do each step yourself.</li>
+    <li>Iron and sulfur: a mixture first, then heated into a new substance (teacher demonstration).</li>
+    <li>Heat sugar in a boiling tube and see what is left behind.</li>
+    <li>Do 6 tasks, in any order.</li>
+  </ul>
+  <p style="font-size:13px;color:#8fa3b3">Turn: drag. Zoom: pinch or scroll. Times are made shorter so you can watch each change. Heating and acids: only with your teacher, as the book says.</p>
+  <button id="bStart">Start</button>
+</div></div>
+
+<script src="zq-telemetry.js"></script><script src="zq-sim-round.js"></script>
+<script>
+/* Separation Lab - standalone sim (ZETAQ_ONE_STANDARD section 10). Data only through the ONE adapter. Facts: CH/source/text.txt */
+var TASKS = [
+  { id: 'magnet_iron', level: 1, title: 'Iron from sand', st: 'sep', mix: 'iron', text: 'Take every iron filing out of the sand. Pick the apparatus, do it, then record.', hint: ['Iron is attracted by a magnet; sand is not.', 'Press Magnet, then hold "Hold to sweep the magnet" until no iron is left. Record result.'] },
+  { id: 'sieve_grains', level: 1, title: 'Two grains', st: 'sep', mix: 'grain', text: 'Separate the small green gram from the big chickpeas. Pick the apparatus, do it, then record.', hint: ['The grains are of different sizes. Small ones can pass through the holes of a sieve.', 'Press Sieve, Pour into sieve, then hold Shake until all the green gram has fallen through. Record result.'] },
+  { id: 'filter_sand', level: 2, title: 'Clear water', st: 'sep', mix: 'sand', text: 'Get clear water out of the sand and water mixture. Set up the filter, pour, then record.', hint: ['Sand does not dissolve in water. Filter paper lets the water through and keeps the sand.', 'Press Filter, Fold paper, Fit in funnel, then hold "Hold to pour" until the beaker is empty and the funnel has drained. Record result.'] },
+  { id: 'evaporate_salt', level: 2, title: 'Salt from salt water', st: 'sep', mix: 'salt', text: 'Get the salt back from salt water. Pick the apparatus, heat, then record.', hint: ['Salt is dissolved: it passes through filter paper. Dissolved salt is separated from water by evaporation.', 'Press Dish + burner, Pour into dish, Light burner. When only salt is left, press Burner off, then Record result.'] },
+  { id: 'iron_sulfur', level: 3, title: 'Iron + sulfur', st: 'fes', text: 'Make Sample A (iron + sulfur), heat half of it into Sample B, then test both samples with a magnet.', hint: ['Order: Weigh out, Mix, Light burner and hold Stir until a black mass forms, Burner off, Cool + grind.', 'Then hold Magnet over A and Magnet over B, one by one. Record result.'] },
+  { id: 'heat_sugar', level: 2, title: 'Heat sugar', st: 'sug', text: 'Heat a teaspoon of sugar gently until it chars. Put the lamp out, scoop the charcoal onto the watch glass, then record.', hint: ['Add sugar, Light lamp, then hold "Hold to heat" until the sugar is black.', 'Look for the water droplets near the open end. Put the lamp out, press Scoop it out, then Record result.'] }
+];
+var S = ZQSim.start({ content: { board: 'CBSE', class: 8, subject: 'SCI', chapter_id: 'CB-C8-SCI-08', chapter: 'Nature of Matter: Elements, Compounds, and Mixtures',
+                                content_id: 'CB-C8-SCI-08-GAME-SEPARATIONLAB', content_version: '1.0' },
+                      tasks: TASKS.map(function (t) { return { id: t.id, level: t.level }; }) });
+window.__S = S; window.TASKS = TASKS;
+</script>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<script type="module" src="separation_lab.js"></script>
+</body></html>

@@ -1,0 +1,5 @@
+Planet, moon and dwarf-planet maps: NASA, NASA/JPL-Caltech, USGS Astrogeology, NASA Earth Observatory and NASA SVS (public domain),
+and Solar System Scope (https://www.solarsystemscope.com/textures/, CC BY 4.0). The full list of every map, its source and
+changes is in items/solar-system/CREDITS.md.
+Spacecraft, station, music and sound effects are made in code by ZetaQ.
+Software: three.js r128 (MIT licence); Saira and JetBrains Mono typefaces (SIL Open Font Licence, Google Fonts).

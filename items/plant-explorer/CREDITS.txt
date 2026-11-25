@@ -1,0 +1,6 @@
+Most models made by ZetaQ (Blender and the ZetaQ 3D library); the chloroplast is based on the ZetaQ Cell Atlas.
+- "Hydrilla" by Valery.Li (https://sketchfab.com/Valery.Li), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Sketchfab:
+  https://sketchfab.com/3d-models/hydrilla-4befcddc7ea642f590afe6f313aac127. Modified: decimated, re-textured, base bulb removed.
+- "Pink Oleander Shrub 3D Model" by misty-wind (https://sketchfab.com/misty-wind), CC BY 4.0, via Sketchfab:
+  https://sketchfab.com/3d-models/pink-oleander-shrub-3d-model-3821ea730a7240f083351e7c09d3627b. Modified: one shrub of nine, decimated.
+Software: three.js (MIT licence).

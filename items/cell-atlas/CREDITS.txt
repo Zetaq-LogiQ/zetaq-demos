@@ -1,0 +1,2 @@
+3D animal-cell models made by ZetaQ in Blender.
+Software: three.js r170 (MIT licence, Copyright 2010-2024 Three.js Authors).

@@ -1,0 +1,553 @@
+{
+ "schema": "zq-tf-statements/2",
+ "board": "CBSE",
+ "class": 6,
+ "subject": "SS",
+ "chapter_id": "CB-C6-SS-04",
+ "chapter": "Timeline and Sources of History",
+ "content_id": "CB-C6-SS-04-GAME-TFROAD",
+ "version": "1.0.0",
+ "title": "Time Detective Ride",
+ "start_sub": "True or false? Ride through the right gate.",
+ "registry": "cbse_c6_ss.json",
+ "theme": "history",
+ "exact_ok": [
+  "TS001",
+  "TS007",
+  "TS013"
+ ],
+ "statements": [
+  {
+   "id": "TS001",
+   "level": 1,
+   "text": "History is the study of the human past.",
+   "answer": true,
+   "why": "Yes, it looks back at how people lived before us.",
+   "skills": [
+    "SS.TS.HIST"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS002",
+   "level": 1,
+   "text": "Geologists study old inscriptions carved on stone.",
+   "answer": false,
+   "why": "Epigraphists read inscriptions; geologists study Earth's physical features.",
+   "skills": [
+    "SS.TS.EXPERT"
+   ],
+   "misconception": "SS.MIS.expert_swap"
+  },
+  {
+   "id": "TS003",
+   "level": 1,
+   "text": "Palaeontologists learn about life from millions of years ago by studying fossils.",
+   "answer": true,
+   "why": "Yes, fossils preserve remains of plants, animals and humans.",
+   "skills": [
+    "SS.TS.EXPERT"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS004",
+   "level": 1,
+   "text": "Archaeologists learn about the past by measuring the height of mountains.",
+   "answer": false,
+   "why": "Archaeologists dig up remains such as tools, pots, beads and bones.",
+   "skills": [
+    "SS.TS.EXPERT"
+   ],
+   "misconception": "SS.MIS.expert_swap"
+  },
+  {
+   "id": "TS005",
+   "level": 1,
+   "text": "A regular Gregorian year has 365 days spread over 12 months.",
+   "answer": true,
+   "why": "Yes, and a leap year comes every four years.",
+   "skills": [
+    "SS.TS.CAL"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS006",
+   "level": 1,
+   "text": "A decade is a period of 100 years.",
+   "answer": false,
+   "why": "A decade is ten years; a century is 100 years.",
+   "skills": [
+    "SS.TS.CENT"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS007",
+   "level": 1,
+   "text": "A millennium is any period of 1,000 years.",
+   "answer": true,
+   "why": "Yes, and a century is a shorter period of 100 years.",
+   "skills": [
+    "SS.TS.CENT"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS008",
+   "level": 1,
+   "text": "BCE years are counted forward from the conventional year of Jesus' birth.",
+   "answer": false,
+   "why": "BCE years count backward from that point; CE years count forward.",
+   "skills": [
+    "SS.TS.CEBCE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS009",
+   "level": 1,
+   "text": "Homo sapiens have been on Earth for about 300,000 years.",
+   "answer": true,
+   "why": "Yes, about three lakh years, a tiny part of Earth's history.",
+   "skills": [
+    "SS.TS.EARLY"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS010",
+   "level": 1,
+   "text": "Early humans lived mostly as farmers, growing cereals.",
+   "answer": false,
+   "why": "They were mainly hunters and gatherers; farming came much later.",
+   "skills": [
+    "SS.TS.EARLY"
+   ],
+   "misconception": "SS.MIS.farming_first"
+  },
+  {
+   "id": "TS011",
+   "level": 1,
+   "text": "Bands of early humans sometimes swapped beads and tooth pendants with other groups.",
+   "answer": true,
+   "why": "Yes, they made these from stone, shell and animal teeth.",
+   "skills": [
+    "SS.TS.EARLY"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS012",
+   "level": 1,
+   "text": "People began using iron first and copper later.",
+   "answer": false,
+   "why": "Copper came first and iron later.",
+   "skills": [
+    "SS.TS.CROPS"
+   ],
+   "misconception": "SS.MIS.iron_before_copper"
+  },
+  {
+   "id": "TS013",
+   "level": 1,
+   "text": "A hamlet is a small settlement or small village.",
+   "answer": true,
+   "why": "Yes, and over time hamlets grew into larger villages.",
+   "skills": [
+    "SS.TS.CROPS"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS014",
+   "level": 1,
+   "text": "The last Ice Age ended around 1,000 years ago.",
+   "answer": false,
+   "why": "It ended around 12,000 years ago.",
+   "skills": [
+    "SS.TS.CROPS"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS015",
+   "level": 1,
+   "text": "A panchanga is a set of tables with each month's days and sky events.",
+   "answer": true,
+   "why": "Yes, many people in India still use these tables.",
+   "skills": [
+    "SS.TS.PANCH"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS016",
+   "level": 1,
+   "text": "A timeline shows the sizes of different countries.",
+   "answer": false,
+   "why": "A timeline puts dates and events in their order.",
+   "skills": [
+    "SS.TS.LINE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS017",
+   "level": 2,
+   "text": "Compared with Earth's whole story, humans arrived very late and have been here briefly.",
+   "answer": true,
+   "why": "Yes, Earth's history is far longer than our 300,000 years.",
+   "skills": [
+    "SS.TS.HIST"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS018",
+   "level": 2,
+   "text": "Earth's history began about 4.54 million years ago.",
+   "answer": false,
+   "why": "It began about 4.54 billion years ago.",
+   "skills": [
+    "SS.TS.HIST"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS019",
+   "level": 2,
+   "text": "Societies often began a new era from a big event, like a ruler taking charge.",
+   "answer": true,
+   "why": "Yes, the birth of an important person could mark one too.",
+   "skills": [
+    "SS.TS.CAL"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS020",
+   "level": 2,
+   "text": "Scholars can still speak the languages of early humans today.",
+   "answer": false,
+   "why": "Those early languages are now lost.",
+   "skills": [
+    "SS.TS.EARLY"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS021",
+   "level": 2,
+   "text": "Hindu, Muslim and Jewish calendars help fix the dates of festivals today.",
+   "answer": true,
+   "why": "Yes, they are used side by side with the Gregorian calendar.",
+   "skills": [
+    "SS.TS.CAL"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS022",
+   "level": 2,
+   "text": "AD marks the years counted after Jesus' death.",
+   "answer": false,
+   "why": "AD refers to the years after Jesus' birth.",
+   "skills": [
+    "SS.TS.CEBCE"
+   ],
+   "misconception": "SS.MIS.ad_after_death"
+  },
+  {
+   "id": "TS023",
+   "level": 2,
+   "text": "The years once marked AD are now called CE.",
+   "answer": true,
+   "why": "Yes, CE stands for Common Era and is used across the world.",
+   "skills": [
+    "SS.TS.CEBCE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS024",
+   "level": 2,
+   "text": "The Gregorian calendar has a year zero between 1 BCE and 1 CE.",
+   "answer": false,
+   "why": "There is no year zero; 1 CE comes straight after 1 BCE.",
+   "skills": [
+    "SS.TS.ZERO"
+   ],
+   "misconception": "SS.MIS.year_zero_counted"
+  },
+  {
+   "id": "TS025",
+   "level": 2,
+   "text": "A timeline can use a dotted stretch to skip long periods and save space.",
+   "answer": true,
+   "why": "Yes, without skipping, long periods would need a huge timeline.",
+   "skills": [
+    "SS.TS.LINE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS026",
+   "level": 2,
+   "text": "Sources of history are limited to written texts.",
+   "answer": false,
+   "why": "Objects, structures, oral tales and art are sources too.",
+   "skills": [
+    "SS.TS.SRC"
+   ],
+   "misconception": "SS.MIS.sources_only_written"
+  },
+  {
+   "id": "TS027",
+   "level": 2,
+   "text": "Oral sources such as folklore can help historians learn about the past.",
+   "answer": true,
+   "why": "Yes, oral sources stand beside archaeological, literary and artistic ones.",
+   "skills": [
+    "SS.TS.SRC"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS028",
+   "level": 2,
+   "text": "When two sources disagree, historians must accept both as equally true.",
+   "answer": false,
+   "why": "Historians choose the source they find more trustworthy.",
+   "skills": [
+    "SS.TS.USE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS029",
+   "level": 2,
+   "text": "Studying old climates gives historians new clues about the past.",
+   "answer": true,
+   "why": "Yes, science has helped rebuild the past much more in recent decades.",
+   "skills": [
+    "SS.TS.USE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS030",
+   "level": 2,
+   "text": "In early farming communities, every person owned a private plot of land.",
+   "answer": false,
+   "why": "The land was shared; people sowed and harvested it together.",
+   "skills": [
+    "SS.TS.CROPS"
+   ],
+   "misconception": "SS.MIS.private_land"
+  },
+  {
+   "id": "TS031",
+   "level": 3,
+   "text": "The year 1999 falls in the 20th century CE.",
+   "answer": true,
+   "why": "Yes, the 20th century CE runs from 1901 to 2000.",
+   "skills": [
+    "SS.TS.CENT"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS032",
+   "level": 3,
+   "text": "The year 2000 falls in the 21st century CE.",
+   "answer": false,
+   "why": "The 21st century CE runs from 2001 to 2100.",
+   "skills": [
+    "SS.TS.CENT"
+   ],
+   "misconception": "SS.MIS.century_from_hundreds"
+  },
+  {
+   "id": "TS033",
+   "level": 3,
+   "text": "The year 250 BCE falls in the 3rd century BCE.",
+   "answer": true,
+   "why": "Yes, the 3rd century BCE runs from 300 BCE to 201 BCE.",
+   "skills": [
+    "SS.TS.CENT"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS034",
+   "level": 3,
+   "text": "The year 1500 CE falls in the 1st millennium CE.",
+   "answer": false,
+   "why": "The 2nd millennium CE covers 1001 to 2000, so 1500 belongs there.",
+   "skills": [
+    "SS.TS.CENT"
+   ],
+   "misconception": "SS.MIS.millennium_from_thousands"
+  },
+  {
+   "id": "TS035",
+   "level": 3,
+   "text": "The year 1600 is a leap year, being a multiple of 400.",
+   "answer": true,
+   "why": "Yes, century years are leap years when they are multiples of 400.",
+   "skills": [
+    "SS.TS.CAL"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS036",
+   "level": 3,
+   "text": "The year 1700 is a leap year in the Gregorian calendar.",
+   "answer": false,
+   "why": "Century years must be multiples of 400 to be leap years.",
+   "skills": [
+    "SS.TS.CAL"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS037",
+   "level": 3,
+   "text": "Between 3 BCE and 3 CE, 5 years pass.",
+   "answer": true,
+   "why": "Yes: 3 + 3 - 1 = 5, as there is no year zero.",
+   "skills": [
+    "SS.TS.ZERO"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS038",
+   "level": 3,
+   "text": "Between 5 BCE and 5 CE, exactly 10 years pass.",
+   "answer": false,
+   "why": "Add and subtract 1: 5 + 5 - 1 = 9 years.",
+   "skills": [
+    "SS.TS.ZERO"
+   ],
+   "misconception": "SS.MIS.year_zero_counted"
+  },
+  {
+   "id": "TS039",
+   "level": 3,
+   "text": "A panchanga could help someone find the date of a solar eclipse.",
+   "answer": true,
+   "why": "Yes, it predicts solar and lunar eclipses precisely.",
+   "skills": [
+    "SS.TS.PANCH"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS040",
+   "level": 3,
+   "text": "Someone reading an ancient stone inscription is working as a geologist.",
+   "answer": false,
+   "why": "Epigraphists are the experts who study ancient inscriptions.",
+   "skills": [
+    "SS.TS.USE"
+   ],
+   "misconception": "SS.MIS.expert_swap"
+  },
+  {
+   "id": "TS041",
+   "level": 4,
+   "text": "A person born in 100 BCE was born before someone born in 50 BCE.",
+   "answer": true,
+   "why": "Yes, BCE years count backward, so the bigger number is earlier.",
+   "skills": [
+    "SS.TS.LINE",
+    "SS.TS.CEBCE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS042",
+   "level": 4,
+   "text": "An event in 500 BCE happened after an event in 200 BCE.",
+   "answer": false,
+   "why": "BCE years count backward, so 500 BCE came before 200 BCE.",
+   "skills": [
+    "SS.TS.CEBCE",
+    "SS.TS.LINE"
+   ],
+   "misconception": "SS.MIS.bce_bigger_later"
+  },
+  {
+   "id": "TS043",
+   "level": 4,
+   "text": "From 100 BCE to 2000 CE, 2,099 years pass.",
+   "answer": true,
+   "why": "Yes: 100 + 2000 - 1 = 2,099.",
+   "skills": [
+    "SS.TS.ZERO"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS044",
+   "level": 4,
+   "text": "From 200 BCE to 100 CE, exactly 300 years pass.",
+   "answer": false,
+   "why": "With no year zero: 200 + 100 - 1 = 299 years.",
+   "skills": [
+    "SS.TS.ZERO"
+   ],
+   "misconception": "SS.MIS.year_zero_counted"
+  },
+  {
+   "id": "TS045",
+   "level": 4,
+   "text": "More food let communities grow, which helped hamlets become villages and then small towns.",
+   "answer": true,
+   "why": "Yes, and river sites with water and fertile soil made farming easier.",
+   "skills": [
+    "SS.TS.CROPS"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS046",
+   "level": 4,
+   "text": "The last Ice Age ended before Homo sapiens first appeared.",
+   "answer": false,
+   "why": "Homo sapiens came 300,000 years ago; that Ice Age ended 12,000 years ago.",
+   "skills": [
+    "SS.TS.EARLY",
+    "SS.TS.CROPS"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS047",
+   "level": 4,
+   "text": "Even careful historians may end up with gaps, since some pieces of the past stay missing.",
+   "answer": true,
+   "why": "Yes, like a jigsaw puzzle with some pieces lost.",
+   "skills": [
+    "SS.TS.SRC",
+    "SS.TS.USE"
+   ],
+   "misconception": null
+  },
+  {
+   "id": "TS048",
+   "level": 4,
+   "text": "Metal tools appeared before people started settling down and growing cereals.",
+   "answer": false,
+   "why": "Settling and farming came first; pottery and metal appeared later.",
+   "skills": [
+    "SS.TS.CROPS"
+   ],
+   "misconception": null
+  }
+ ]
+}

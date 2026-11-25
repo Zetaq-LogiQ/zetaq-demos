@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>Changes Lab</title>
+<style>
+:root{--ink:#EAF1F6;--dim:#A9B9C6;--panel:rgba(16,24,33,.9);--panel2:rgba(34,48,61,.95);--line:rgba(160,190,210,.18);--acc:#2A9D96;--sun:#FFD25A;--shadow:0 6px 22px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:#0E161D;color:var(--ink);font:15px/1.35 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;touch-action:none;user-select:none;-webkit-user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+button{font:inherit;border:0;cursor:pointer;color:inherit;background:none}
+button:disabled{cursor:default;opacity:.45}
+.btn{min-height:40px;min-width:40px;border-radius:11px;background:var(--panel2);box-shadow:var(--shadow);padding:0 10px;font-weight:600;border:1px solid var(--line)}
+.ico{width:19px;height:19px;vertical-align:middle}
+#labels{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.lbl{position:absolute;left:0;top:0;background:rgba(14,22,30,.86);border:1px solid var(--line);color:#fff;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.lbl b{color:#8FD0FF}.lbl.y b{color:#FFE38F}.lbl.c b{color:#FFA092}.lbl.g b{color:#C2EE82}
+#top{position:fixed;left:0;right:0;top:0;padding:max(8px,env(safe-area-inset-top)) 8px 0;display:flex;gap:6px;align-items:flex-start;z-index:5;pointer-events:none}
+#top>*{pointer-events:auto}
+#card{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:7px 10px 8px}
+#card .row1{display:flex;gap:8px;align-items:center}
+#card .k{flex:1;min-width:0;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#74E3D9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bHint{min-height:30px;min-width:30px;border-radius:9px;background:#3a3420;color:#FFE38F;font-weight:800;padding:0 9px;font-size:13px;border:1px solid rgba(255,227,143,.25)}
+#line{font-weight:600;font-size:14.5px;margin-top:3px}
+#safe{display:none;margin-top:5px;font-size:12px;color:#FFE38F;font-weight:700}
+#hintText{display:none;margin-top:5px;font-size:12.5px;color:#FFE38F}
+#why{display:none;margin-top:6px;font-size:13px;background:#4a2626;border-radius:9px;padding:6px 8px;color:#FFD9D3}
+#res{display:none;margin-top:4px}
+#res .h{font-size:15.5px;font-weight:800;color:#9EF0C8}
+#res .h .st{color:var(--sun);letter-spacing:1px;margin-left:6px}
+#res .t{font-size:13.5px;color:#D5E0E8;margin-top:3px}
+#res .eq{margin-top:6px;background:#F2F5F3;color:#173A36;border-radius:9px;padding:6px 8px;font-weight:700;font-size:13.5px;line-height:1.3}
+#res .eq small{display:block;font-weight:600;color:#4B6360;font-size:11.5px}
+#side{display:flex;flex-direction:column;gap:6px}
+#side .btn{padding:0;width:40px}
+#bottom{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:0 10px max(10px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+#bottom>*{pointer-events:auto}
+#dots{display:flex;gap:6px;justify-content:center;pointer-events:none}
+#dots i{width:8px;height:8px;border-radius:50%;background:#2C3B4A;border:1px solid rgba(255,255,255,.15)}
+#dots i.on{background:#74E3D9}#dots i.cur{background:#fff}
+#bNext{width:min(420px,100%);min-height:56px;border-radius:16px;background:var(--acc);color:#fff;font-weight:800;font-size:18px;letter-spacing:.04em;box-shadow:var(--shadow)}
+#bNext.wait{background:#24534f;color:#A9D8D3}
+#choices{display:none;width:min(420px,100%);flex-direction:column;gap:6px}
+#choices .q{font-size:12.5px;color:var(--dim);font-weight:700;text-align:center}
+#choices .r{display:flex;gap:6px}
+#choices button{flex:1;min-height:54px;border-radius:14px;background:var(--panel2);border:1px solid var(--line);font-weight:800;font-size:15px;box-shadow:var(--shadow)}
+#choices button.x{opacity:.4;text-decoration:line-through}
+#toast{position:fixed;left:50%;transform:translateX(-50%);z-index:8;background:rgba(14,22,30,.95);border:1px solid var(--line);color:#fff;padding:9px 14px;border-radius:12px;font-weight:600;font-size:14px;max-width:min(92vw,520px);text-align:center;box-shadow:var(--shadow);opacity:0;transition:opacity .25s;pointer-events:none;bottom:96px}
+#toast.show{opacity:1}
+#sheet{position:fixed;inset:0;z-index:9;background:rgba(5,10,14,.55);display:none;align-items:flex-end;justify-content:center}
+#sheet.show{display:flex}
+#sheet .box{width:min(560px,100%);max-height:86vh;overflow:auto;background:#17222C;border:1px solid var(--line);border-radius:18px 18px 0 0;padding:14px 14px max(16px,env(safe-area-inset-bottom));box-shadow:var(--shadow)}
+#sheet h2{margin:0 0 8px;font-size:18px}
+#sheet .x{float:right}
+.trow{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0;min-height:52px}
+.trow .n{width:26px;height:26px;border-radius:50%;background:#2C3B4A;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.trow .s{margin-left:auto;color:var(--sun);font-size:16px;letter-spacing:1px;flex:none}
+.trow.cur{outline:2px solid #74E3D9}.trow small{display:block;color:var(--dim);font-size:12px}
+#intro{position:fixed;inset:0;z-index:10;background:radial-gradient(ellipse at 50% 30%,#22394a 0%,#0c141a 75%);display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}
+#intro .box{max-width:480px;background:rgba(16,24,33,.92);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+#intro h1{margin:0;font-size:24px}#intro .sub{color:#74E3D9;font-weight:700;margin:2px 0 10px}
+#intro p{color:#D5E0E8;font-size:14.5px;margin:8px 0}
+#bStart{width:100%;min-height:52px;border-radius:14px;background:var(--acc);color:#fff;font-size:17px;font-weight:800;margin-top:10px}
+#loading{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;color:var(--dim)}
+#done{position:fixed;inset:0;z-index:11;background:rgba(5,10,14,.7);display:none;align-items:center;justify-content:center;padding:18px}
+#done .box{max-width:420px;background:#17222C;border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center}
+@media (min-width:900px){
+  #top{left:12px;right:auto;width:480px;top:6px}
+  #bottom{left:auto;right:14px;bottom:14px;width:440px;padding:0}
+  #toast{left:auto;right:14px;transform:none;bottom:110px}
+}
+</style>
+</head><body>
+<canvas id="c"></canvas>
+<div id="loading">Loading the lab…</div>
+<div id="labels"></div>
+<div id="top">
+  <div id="card">
+    <div class="row1"><div class="k" id="key">Changes Lab</div><button id="bHint" aria-label="Hint">?</button></div>
+    <div id="line">Press Start.</div>
+    <div id="safe"></div>
+    <div id="hintText"></div>
+    <div id="why"></div>
+    <div id="res"><div class="h" id="resH"></div><div class="t" id="resT"></div><div class="eq" id="resEq"></div></div>
+  </div>
+  <div id="side">
+    <button class="btn" id="bList" aria-label="Experiments"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.4"/><circle cx="4.5" cy="12" r="1.4"/><circle cx="4.5" cy="18" r="1.4"/></svg></button>
+    <button class="btn" id="bMusic" aria-label="Sound on or off"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/><path id="muteX" d="M3 3l18 18" style="display:none"/></svg></button>
+    <button class="btn" id="bExit" aria-label="Exit"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</div>
+<div id="bottom">
+  <div id="dots"></div>
+  <button id="bNext">NEXT</button>
+  <div id="choices"><div class="q">What kind of change was this?</div><div class="r"><button id="cPhy" data-a="physical">Physical</button><button id="cChem" data-a="chemical">Chemical</button><button id="cBoth" data-a="both">Both</button></div></div>
+</div>
+<div id="toast"></div>
+<div id="sheet"><div class="box" id="sheetBox"></div></div>
+<div id="done"><div class="box"><h2 style="margin-top:0">All six experiments done</h2><p id="doneStars" style="color:#FFD25A;font-size:18px"></p><p style="color:#A9B9C6">You can watch any experiment again from the list, or close this page.</p><button class="btn" id="bDoneOk" style="width:100%;min-height:46px">OK</button></div></div>
+<div id="intro"><div class="box">
+  <h1>Changes Lab</h1>
+  <div class="sub">Changes Around Us: Physical and Chemical</div>
+  <p>Six experiments on one lab bench. Press <b>NEXT</b> to see each stage happen. At the end of each experiment, tap the kind of change: physical, chemical, or both.</p>
+  <p style="font-size:13px;color:#8fa3b3">Turn: drag. Zoom: pinch or scroll. Times are made shorter so you can watch each change. Fire: only under the supervision of your teacher or an adult, as the book says.</p>
+  <button id="bStart">Start</button>
+</div></div>
+
+<script src="zq-telemetry.js"></script><script src="zq-sim-round.js"></script>
+<script>
+/* Changes Lab - standalone sim (ZETAQ_ONE_STANDARD section 10). Data only through the ONE adapter. Facts: CH/source/text.txt (+ ch04 for the rusting set-up and the magnesium caution). */
+var TASKS = [
+  { id: 'paper_chalk', level: 1, title: 'Paper and chalk' },
+  { id: 'ice_water', level: 1, title: 'Ice and water' },
+  { id: 'lime_water', level: 2, title: 'Blowing into lime water' },
+  { id: 'vinegar_soda', level: 3, title: 'Vinegar and baking soda' },
+  { id: 'rust_magnesium', level: 3, title: 'Rusting and burning magnesium' },
+  { id: 'candle', level: 4, title: 'A burning candle' }
+];
+var S = ZQSim.start({ content: { board: 'CBSE', class: 7, subject: 'SCI', chapter_id: 'CB-C7-SCI-05', chapter: 'Changes Around Us: Physical and Chemical',
+                                content_id: 'CB-C7-SCI-05-GAME-CHANGESLAB', content_version: '1.0' },
+                      tasks: TASKS.map(function (t) { return { id: t.id, level: t.level }; }) });
+window.__S = S; window.TASKS = TASKS;
+</script>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+<script type="module" src="changes_lab.js"></script>
+</body></html>

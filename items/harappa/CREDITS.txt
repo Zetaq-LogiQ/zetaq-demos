@@ -1,0 +1,20 @@
+3D models: made by ZetaQ in Tripo Studio (paid plan, commercial use).
+Buildings, textures, carts, boats, kilns, music and sound effects are generated in code by ZetaQ.
+
+Photos (shown in the discovery cards):
+- Great Bath, Mohenjo-daro - Soban, Wikimedia Commons, CC BY-SA 3.0
+  https://commons.wikimedia.org/wiki/File:Great_Bath_of_Mohenjo-daro.jpg
+- Drainage system at Lothal - Sanjeev.singh3, Wikimedia Commons, CC BY-SA 3.0
+  https://commons.wikimedia.org/wiki/File:Drainage_system_at_Lothal_(2011-12-05_10.40.32).jpg
+- Brick well, Mohenjo-daro - Najamuddin Shahwani, Wikimedia Commons, CC BY 3.0
+  https://commons.wikimedia.org/wiki/File:Monejodaro_well_-_panoramio.jpg
+- Stamp seal (unicorn) and modern impression - The Metropolitan Museum of Art, via Wikimedia Commons, CC0
+- Indus carnelian beads excavated at Susa - ALFGRN, Wikimedia Commons, CC BY-SA 2.0
+  https://commons.wikimedia.org/wiki/File:Indus_Valley_Civilization_carnelian_beads_excavated_in_Susa.jpg
+- "Dancing Girl" of Mohenjo-daro - Gary Todd, Wikimedia Commons, CC0
+  https://commons.wikimedia.org/wiki/File:Dancing_girl_of_Mohenjo-daro.jpg
+
+Reconstruction: the city is modelled on Mohenjo-daro. Roofs, upper floors, the wooden hall, carts and boats are
+reconstructions (only brick walls survive); distances are shortened.
+
+Software: three.js r128 + GLTFLoader (MIT licence); Nunito typeface (SIL Open Font Licence).

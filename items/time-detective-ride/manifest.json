@@ -1,0 +1,29 @@
+{
+ "content_id": "CB-C6-SS-04-GAME-TFROAD",
+ "content_type": "game",
+ "chapter_id": "CB-C6-SS-04",
+ "chapter": "Timeline and Sources of History",
+ "class": 6,
+ "subject": "SS",
+ "content_version": "1.0.0",
+ "engine": "tf_road",
+ "engine_version": "2.0.0",
+ "kit_version": "1.2.2",
+ "contract": "EVENT_CONTRACT 1.0 (section 4, answer game)",
+ "registry": "cbse_c6_ss.json",
+ "built_at": "2026-11-25T11:55:39",
+ "index_sha256": "eb0a129ffdf528a5962a6db35ac35215004d777e366351b2be034139fc7ac1fb",
+ "index_bytes": 4526171,
+ "statements": 48,
+ "true": 24,
+ "levels": {
+  "1": 16,
+  "2": 14,
+  "3": 10,
+  "4": 8
+ },
+ "question_ids": "CB-C6-SS-04-GAME-TFROAD:<statement id>",
+ "checked": true,
+ "entry": "index.html?student=<id>&school=<id>&class_section=<id>&assigned=1&endpoint=<https url>/events",
+ "theme": "history"
+}

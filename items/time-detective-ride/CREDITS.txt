@@ -1,0 +1,6 @@
+True/False statements written by ZetaQ in our own words and checked by an independent reviewer.
+Rider: ZetaQ character made in VRoid Studio. Bullock, horse, trees, huts and props: ZetaQ 3D library models made in
+Tripo Studio (paid plan, commercial use). Houses, walls, gate, stalls, wells, ghats, boats and all textures drawn in code.
+- Wooden cart: made for ZetaQ in Tripo Studio from the photo "Ancient Bulllock cart" by Archies2804, CC BY-SA 4.0,
+  Wikimedia Commons.
+Music and sound effects are composed in code (Web Audio). Software: three.js r170 (MIT licence, Copyright 2010-2024 Three.js Authors).

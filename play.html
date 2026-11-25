@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZetaQ Demos</title>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0d1c">
+<link rel="icon" href="favicon.ico">
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0d1c; overflow: hidden; }
+  .bar { position: fixed; top: 0; left: 0; right: 0; height: calc(34px + env(safe-area-inset-top)); padding: env(safe-area-inset-top) 10px 0;
+    display: flex; align-items: center; gap: 10px; background: #0b0d1c; color: #eef0f7; z-index: 2;
+    font: 600 13px/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; box-sizing: border-box; }
+  .back { display: inline-flex; align-items: center; gap: 6px; color: #e2b35c; text-decoration: none; padding: 6px 10px 6px 6px;
+    border-radius: 999px; background: rgba(226,179,92,.12); white-space: nowrap; }
+  .back img { width: 14px; height: auto; }
+  .back:hover, .back:focus-visible { background: rgba(226,179,92,.22); outline: none; }
+  .name { color: #a3a8c0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  iframe { position: fixed; left: 0; right: 0; bottom: 0; top: calc(34px + env(safe-area-inset-top)); width: 100%;
+    height: calc(100% - 34px - env(safe-area-inset-top)); border: 0; background: #000; }
+  .missing { color: #eef0f7; font: 15px system-ui, sans-serif; padding: 60px 16px; text-align: center; }
+  .missing a { color: #e2b35c; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="back" href="./"><span aria-hidden="true">←</span><img src="assets/zetaq-mark.png" alt=""> ZetaQ Demos</a>
+  <span class="name" id="name"></span>
+</div>
+<script src="demos.js"></script>
+<script>
+(function () {
+  var slug = new URLSearchParams(location.search).get('d');
+  var d = (window.ZQ_DEMOS || []).filter(function (x) { return x.slug === slug; })[0];
+  if (!d) {
+    var m = document.createElement('div'); m.className = 'missing';
+    m.innerHTML = 'Demo not found. <a href="./">Back to ZetaQ Demos</a>';
+    document.body.appendChild(m); return;
+  }
+  document.title = d.title + ' · ZetaQ Demos';
+  document.getElementById('name').textContent = d.title;
+  var f = document.createElement('iframe');
+  f.src = 'items/' + d.slug + '/index.html' + (d.query || '');
+  f.title = d.title;
+  f.allow = 'fullscreen; autoplay; accelerometer; gyroscope; xr-spatial-tracking';
+  f.allowFullscreen = true;
+  f.addEventListener('load', function () { try { f.contentWindow.focus(); } catch (e) {} });
+  document.body.appendChild(f);
+})();
+</script>
+</body>
+</html>

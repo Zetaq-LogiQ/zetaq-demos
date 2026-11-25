@@ -1,0 +1,52 @@
+:root {
+  --bg: #f6f3ec; --surface: #ffffff; --ink: #1b1d2a; --soft: #5d6274; --line: #e5e0d4;
+  --gold: #b8862f; --gold-soft: #f3e6c9; --chip-ink: #7a5714; --shadow: 0 1px 2px rgba(20,20,40,.06), 0 6px 18px rgba(20,20,40,.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0b0d1c; --surface: #151829; --ink: #eef0f7; --soft: #a3a8c0; --line: #262a40;
+    --gold: #e2b35c; --gold-soft: #2b2617; --chip-ink: #f0c877; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 22px rgba(0,0,0,.35); }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+body { margin: 0; background: var(--bg); color: var(--ink); -webkit-text-size-adjust: 100%;
+  font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif; }
+.top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  padding: max(10px, env(safe-area-inset-top)) 16px 0; }
+.brand { display: flex; align-items: center; gap: 8px; max-width: 1180px; margin: 0 auto; }
+.brand img { width: 28px; height: auto; display: block; }
+.word { font-weight: 800; font-size: 21px; letter-spacing: .2px; color: var(--gold); }
+.tag { font-weight: 600; font-size: 21px; color: var(--ink); }
+.tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; max-width: 1180px; margin: 8px auto 0; padding-bottom: 10px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink); text-decoration: none; font-size: 13.5px; font-weight: 600; white-space: nowrap; }
+.tab:hover, .tab:focus-visible { border-color: var(--gold); outline: none; }
+main { max-width: 1180px; margin: 0 auto; padding: 4px 16px 24px; }
+.group { padding-top: 18px; }
+.group h2 { font-size: 17px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+.count { font-size: 12px; font-weight: 700; color: var(--soft); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; padding: 1px 8px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 720px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 1040px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform .15s, border-color .15s; }
+.card:hover, .card:focus-visible { transform: translateY(-2px); border-color: var(--gold); outline: none; }
+.card:active { transform: scale(.98); }
+.thumb { aspect-ratio: 16 / 10; background: var(--line); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.body { padding: 9px 10px 11px; display: flex; flex-direction: column; gap: 5px; }
+.chip { align-self: flex-start; font-size: 11px; font-weight: 700; color: var(--chip-ink); background: var(--gold-soft);
+  border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+.card h3 { margin: 0; font-size: 14.5px; line-height: 1.25; font-weight: 700; }
+.foot { max-width: 1180px; margin: 0 auto; padding: 18px 16px max(22px, env(safe-area-inset-bottom)); display: flex;
+  justify-content: space-between; color: var(--soft); font-size: 13px; border-top: 1px solid var(--line); }
+.foot a { color: var(--gold); font-weight: 600; text-decoration: none; }
+/* credits page */
+.doc { max-width: 860px; margin: 0 auto; padding: 16px; }
+.doc a.back { color: var(--gold); font-weight: 600; text-decoration: none; }
+.doc h1 { font-size: 22px; margin: 14px 0 6px; }
+.doc h2 { font-size: 16px; margin: 22px 0 6px; }
+.doc pre { white-space: pre-wrap; word-break: break-word; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px; font-size: 12.5px; line-height: 1.5; margin: 0; }

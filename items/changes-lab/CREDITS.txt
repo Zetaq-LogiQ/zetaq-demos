@@ -1,0 +1,2 @@
+All apparatus, liquids, powders, flames and music are generated in code by ZetaQ. No photos or outside models.
+Software: three.js r170 (MIT licence, Copyright 2010-2024 Three.js Authors). Addons OrbitControls, RoomEnvironment, RoundedBoxGeometry (MIT).
