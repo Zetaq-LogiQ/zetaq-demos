@@ -30,11 +30,11 @@ const scene = new THREE.Scene();
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), .03).texture; scene.environmentIntensity = .85;
 const tex = (draw, w = 256, h = 128) => { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; };
-scene.background = tex((x, w, h) => { const g = x.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#F7FAFC'); g.addColorStop(.55, '#E8EFF3'); g.addColorStop(1, '#D9E3E9'); x.fillStyle = g; x.fillRect(0, 0, w, h); }, 4, 256);
+scene.background = tex((x, w, h) => { const g = x.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#34444F'); g.addColorStop(.55, '#26333C'); g.addColorStop(1, '#1A242B'); x.fillStyle = g; x.fillRect(0, 0, w, h); }, 4, 256);
 const camera = new THREE.PerspectiveCamera(34, 1, 1, 900);
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true; controls.dampingFactor = .14; controls.enablePan = false; controls.rotateSpeed = .7; controls.zoomSpeed = .6;
-scene.add(new THREE.HemisphereLight('#FFFFFF', '#CBD5DC', .55));
+scene.add(new THREE.HemisphereLight('#FFFFFF', '#3A454C', .55));
 const key = new THREE.DirectionalLight('#FFF7EE', 2.1); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -.0005; key.shadow.normalBias = .02; key.shadow.radius = 4;
 Object.assign(key.shadow.camera, { left: -26, right: 26, top: 26, bottom: -26, near: 10, far: 220 }); scene.add(key, key.target);
 const fill = new THREE.DirectionalLight('#E4F0FF', .6); scene.add(fill, fill.target);
@@ -49,13 +49,13 @@ function blob(parent, r, x = 0, z = 0, k = 1) { const m = new THREE.Mesh(new THR
 
 // the room: white bench top (top surface y = 0), front edge band set lower, tiled splash-back, a shelf far behind (no coplanar faces)
 const ROOM = new THREE.Group(); scene.add(ROOM);
-{ const top = new THREE.Mesh(new THREE.BoxGeometry(200, 4, 80), new THREE.MeshStandardMaterial({ map: noiseTex('#EDF1F3', .05, 3, 6), roughness: .42, metalness: 0 }));
+{ const top = new THREE.Mesh(new THREE.BoxGeometry(200, 4, 80), new THREE.MeshStandardMaterial({ map: noiseTex('#2B3135', .06, 3, 6), roughness: .3, metalness: 0 }));
   top.position.set(0, -2, 0); top.receiveShadow = true; ROOM.add(top);
-  const edge = new THREE.Mesh(new THREE.BoxGeometry(200.6, 3, 1.2), new THREE.MeshStandardMaterial({ color: '#C9D3DA', roughness: .5 })); edge.position.set(0, -1.75, 40.3); ROOM.add(edge);
-  const tt = tex((x, w, h) => { x.fillStyle = '#D5DEE4'; x.fillRect(0, 0, w, h); const R = mulberry(9); for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) { const v = 246 + (R() * 6 | 0); x.fillStyle = `rgb(${v},${v + 2},${v + 3})`; x.fillRect(i * 64 + 1.5, j * 64 + 1.5, 61, 61); } }, 256, 256);
+  const edge = new THREE.Mesh(new THREE.BoxGeometry(200.6, 3, 1.2), new THREE.MeshStandardMaterial({ color: '#1C2124', roughness: .5 })); edge.position.set(0, -1.75, 40.3); ROOM.add(edge);
+  const tt = tex((x, w, h) => { x.fillStyle = '#2C3A42'; x.fillRect(0, 0, w, h); const R = mulberry(9); for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) { const v = 72 + (R() * 8 | 0); x.fillStyle = `rgb(${v},${v + 2},${v + 3})`; x.fillRect(i * 64 + 1.5, j * 64 + 1.5, 61, 61); } }, 256, 256);
   tt.wrapS = tt.wrapT = THREE.RepeatWrapping; tt.repeat.set(200 / 40, 70 / 40);
   const wall = new THREE.Mesh(new THREE.PlaneGeometry(200, 70), new THREE.MeshStandardMaterial({ map: tt, roughness: .35 })); wall.position.set(0, 35, -34); wall.receiveShadow = true; ROOM.add(wall);
-  const shelf = new THREE.Mesh(new THREE.BoxGeometry(120, 1.2, 9), new THREE.MeshStandardMaterial({ color: '#F4F6F7', roughness: .5 })); shelf.position.set(0, 40, -29); shelf.castShadow = shelf.receiveShadow = true; ROOM.add(shelf);
+  const shelf = new THREE.Mesh(new THREE.BoxGeometry(120, 1.2, 9), new THREE.MeshStandardMaterial({ color: '#5B6770', roughness: .5 })); shelf.position.set(0, 40, -29); shelf.castShadow = shelf.receiveShadow = true; ROOM.add(shelf);
   const R = mulberry(4), cols = ['#6B3A12', '#E9EEF0', '#6B3A12', '#2D6FB0', '#E9EEF0', '#6B3A12'];
   for (let i = 0; i < 16; i++) { const r = 1.4 + R() * .9, h = 5 + R() * 3, m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 20), new THREE.MeshStandardMaterial({ color: cols[i % cols.length], roughness: .25, metalness: .1 }));
     m.position.set(-55 + i * 7.2 + R() * 2, 40.6 + h / 2, -29 + (R() - .5) * 3); m.castShadow = true; ROOM.add(m); } }
